@@ -5,10 +5,12 @@ function Vehicle(driver) {
   this.speed = 0;
 
   Vehicle.prototype.drive = function (kmh) {
+    this.speed = kmh;
     return `Polly driving at ${kmh} kilometers per hour`
   };
 
   Vehicle.prototype.stop = function () {
+    this.speed = 0;
     return 'Polly has stopped';
   };
 }
@@ -21,16 +23,18 @@ Train.prototype.constructor = Train;
 
 function Truck(driver) {
   Vehicle.call(this, driver);
+  this.cargo = [];
 
-  Truck.prototype.loadCargo = function (cargo) {
-    
+  Truck.prototype.loadCargo = function (el) {
+     this.cargo.push(el);
+     return this.cargo
   };
 }
 Truck.prototype = Object.create(Vehicle.prototype);
 Truck.prototype.constructor = Truck;
 
 Truck.prototype.unloadCargo = function () {
-   
+  return this.cargo.pop();
 };
 // экспорт Vehicle, Train, Truc в файл с тестами
 module.exports = { Vehicle, Train, Truck };
