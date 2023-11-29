@@ -2,12 +2,12 @@
  * Человек.
  * @param {string} name
  */
-function Person(name) {
-  // Код тут.
+function Person(name, watchedMovies ) {
+  this.name = name;
+  this.watchedMovies = watchedMovies;
 }
 
-Person.prototype.watchMovie = function (movie) {
-  // Код тут.
+Person.prototype.watchMovie = function(movie) {
 };
 
 module.exports = { Person };
